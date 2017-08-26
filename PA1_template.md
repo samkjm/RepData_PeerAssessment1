@@ -64,17 +64,15 @@ The mean is 1.0766189\times 10^{4} and the median is 10765.
 
 ```r
 ggplot(StepsByDate,aes(x=date,y=total)) +
-    geom_histogram(stat="identity") +
-  	theme_bw() +
-  	xlab("Dates")+ 
-  	ylab("Total number of Steps")+ 
-  	labs(title="Total numbers of Steps per day") +
-  	geom_hline(aes(yintercept = MeanSteps, colour = "Mean",linetype= "Mean",show.legend=TRUE)) +
-    
-    geom_hline(aes(yintercept = MedianSteps, colour = "Median",linetype= "Median",show.legend=TRUE)) +
-  
-    scale_colour_manual(name="Legend", values=c("Mean"="red","Median"="blue"))+
-   scale_linetype_manual(name="Legend", values=c("Mean"="solid","Median"="dashed"))
+geom_histogram(stat="identity") +
+theme_bw() +
+xlab("Dates")+ 
+ylab("Total number of Steps")+ 
+labs(title="Total numbers of Steps per day") +
+geom_hline(aes(yintercept = MeanSteps, colour = "Mean",linetype= "Mean",show.legend=TRUE)) +
+geom_hline(aes(yintercept = MedianSteps, colour = "Median",linetype= "Median",show.legend=TRUE)) +
+scale_colour_manual(name="Legend", values=c("Mean"="red","Median"="blue"))+
+scale_linetype_manual(name="Legend",values=c("Mean"="solid","Median"="dashed"))
 ```
 
 ```
@@ -102,7 +100,7 @@ StepsByInterval <- ddply(Activity, .(interval), summarize, mean_steps = mean(ste
 	
 	
 	
-	plot(StepsByInterval$interval, 
+plot(StepsByInterval$interval, 
      StepsByInterval$mean_steps, 
      type="l", 
      col="black", 
@@ -163,16 +161,16 @@ The new mean is 1.0766189\times 10^{4} and the new median is 1.0766189\times 10^
 4a	Make a histogram of the total number of steps taken each day 
 
 ```r
-	ggplot(StepsByDate_NAfilled,aes(x=date,y=total)) +
-    	geom_histogram(stat="identity")+
-  		theme_bw() +
-  		xlab("Dates")+ 
-  		ylab("Total number of Steps (NA filled)")+ 
-  		labs(title= expression("Total numbers of Steps per day(NA filled)"))+
-	    geom_hline(aes(yintercept =MeanNAFilled, colour = "Mean",linetype= "Mean"))+
-      geom_hline(aes(yintercept = MedianNAFilled, colour = "Median",linetype= "Median"))+
-      scale_colour_manual(name="Legend", values=c("Mean"="red","Median"="blue"))+
-      scale_linetype_manual(name="Legend", values=c("Mean"="solid","Median"="dashed"))
+ggplot(StepsByDate_NAfilled,aes(x=date,y=total)) +
+geom_histogram(stat="identity")+
+theme_bw() +
+xlab("Dates")+ 
+ylab("Total number of Steps (NA filled)")+ 
+labs(title= expression("Total numbers of Steps per day(NA filled)"))+
+geom_hline(aes(yintercept =MeanNAFilled, colour = "Mean",linetype= "Mean"))+
+geom_hline(aes(yintercept = MedianNAFilled, colour = "Median",linetype= "Median"))+
+scale_colour_manual(name="Legend", values=c("Mean"="red","Median"="blue"))+
+scale_linetype_manual(name="Legend",values=c("Mean"="solid","Median"="dashed"))
 ```
 
 ```
@@ -260,19 +258,20 @@ For this part the 𝚠𝚎𝚎𝚔𝚍𝚊𝚢𝚜() function may be of some hel
 
 ```r
 Activity2<- data.frame(date=Activity2$date, 
-                           weekday=tolower(weekdays(Activity2$date)), 
-                           steps=Activity2$steps, 
-                           interval=Activity2$interval)
+weekday=tolower(weekdays(Activity2$date)), 
+steps=Activity2$steps, 
+interval=Activity2$interval)
+
 Activity2 <- cbind(Activity2, 
-                      daytype=ifelse(Activity2$weekday == "saturday" | 
-                                     Activity2$weekday == "sunday", "weekend", 
-                                     "weekday"))
+daytype=ifelse(Activity2$weekday == "saturday" | 
+Activity2$weekday == "sunday", "weekend", 
+"weekday"))
 
 Activity3 <- data.frame(date=Activity2$date, 
-                       weekday=Activity2$weekday, 
-                       daytype=Activity2$daytype, 
-                       interval=Activity2$interval,
-                       steps=Activity2$steps)
+weekday=Activity2$weekday, 
+daytype=Activity2$daytype, 
+interval=Activity2$interval,
+steps=Activity2$steps)
 ```
 
 
@@ -284,11 +283,11 @@ Activity3 <- data.frame(date=Activity2$date,
 StepsByInterval_NAfilled <- ddply(Activity3, .(interval,daytype), summarize, mean_steps = mean(steps, na.rm=TRUE))
 
 ggplot(StepsByInterval_NAfilled, aes(interval, mean_steps)) +
-    geom_line(stat = "identity", aes(colour = daytype)) +
-    theme_bw() +
-    facet_grid(daytype ~ ., scales="fixed", space="fixed") +
-    labs(x="Interval", y=expression("No of Steps")) +
-    ggtitle("No of steps Per Interval by day type")
+geom_line(stat = "identity", aes(colour = daytype)) +
+theme_bw() +
+facet_grid(daytype ~ ., scales="fixed", space="fixed") +
+labs(x="Interval", y=expression("No of Steps")) +
+ggtitle("No of steps Per Interval by day type")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
