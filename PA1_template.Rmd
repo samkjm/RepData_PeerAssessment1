@@ -13,6 +13,7 @@ Process/transform the data (if necessary) into a format suitable for your analys
 library(ggplot2)
 library(plyr)
 library(lubridate)
+options(scipen=999)
 Activity <- read.csv("activity.csv",stringsAsFactors=FALSE)
 Activity_noNA <- subset(Activity, is.na(Activity$steps) == FALSE)
 ```
@@ -35,8 +36,9 @@ StepsByDate <- ddply(Activity_noNA, .(date), summarize, total = sum(steps, na.rm
 
 3	Calculate and report the mean and median of the total number of steps taken per day
 ```{r}	
-MeanSteps <- mean(StepsByDate$total)
-MedianSteps <- median(StepsByDate$total)
+
+MeanSteps <- round(mean(StepsByDate$total), digits=2)
+MedianSteps <- round(median(StepsByDate$total), digits=2)
 ```
 The mean is `r MeanSteps` and the median is `r MedianSteps`.
 
@@ -120,8 +122,8 @@ Activity2[NANumber, "steps"] <- NAFiller
 4b Calculate and report the mean and median total number of steps taken per day. 
 ```{r}
 StepsByDate_NAfilled <- ddply(Activity2, .(date), summarize, total=sum(steps,na.rm=TRUE))
-MeanNAFilled <- mean(StepsByDate_NAfilled$total)
-MedianNAFilled <- median(StepsByDate_NAfilled$total)
+MeanNAFilled <- round(mean(StepsByDate_NAfilled$total), digits=2)
+MedianNAFilled <- round(median(StepsByDate_NAfilled$total), digits=2)
 ```
 The new mean is `r MeanNAFilled` and the new median is `r MedianNAFilled`.
 

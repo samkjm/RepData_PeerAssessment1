@@ -29,6 +29,7 @@ library(lubridate)
 ```
 
 ```r
+options(scipen=999)
 Activity <- read.csv("activity.csv",stringsAsFactors=FALSE)
 Activity_noNA <- subset(Activity, is.na(Activity$steps) == FALSE)
 ```
@@ -54,10 +55,10 @@ StepsByDate <- ddply(Activity_noNA, .(date), summarize, total = sum(steps, na.rm
 3	Calculate and report the mean and median of the total number of steps taken per day
 
 ```r
-MeanSteps <- mean(StepsByDate$total)
-MedianSteps <- median(StepsByDate$total)
+MeanSteps <- round(mean(StepsByDate$total), digits=2)
+MedianSteps <- round(median(StepsByDate$total), digits=2)
 ```
-The mean is 1.0766189\times 10^{4} and the median is 10765.
+The mean is 10766.19 and the median is 10765.
 
 2	If you do not understand the difference between a histogram and a barplot, research the difference between them. Make a histogram of the total number of steps 	taken each day
 
@@ -87,7 +88,7 @@ scale_linetype_manual(name="Legend",values=c("Mean"="solid","Median"="dashed"))
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
-The mean is 1.0766189\times 10^{4} and the median is 10765 and both nearly overlap each other. 
+The mean is 10766.19 and the median is 10765 and both nearly overlap each other. 
 
 
 Question 2
@@ -152,10 +153,10 @@ Activity2[NANumber, "steps"] <- NAFiller
 
 ```r
 StepsByDate_NAfilled <- ddply(Activity2, .(date), summarize, total=sum(steps,na.rm=TRUE))
-MeanNAFilled <- mean(StepsByDate_NAfilled$total)
-MedianNAFilled <- median(StepsByDate_NAfilled$total)
+MeanNAFilled <- round(mean(StepsByDate_NAfilled$total), digits=2)
+MedianNAFilled <- round(median(StepsByDate_NAfilled$total), digits=2)
 ```
-The new mean is 1.0766189\times 10^{4} and the new median is 1.0766189\times 10^{4}.
+The new mean is 10766.19 and the new median is 10766.19.
 
 	
 4a	Make a histogram of the total number of steps taken each day 
@@ -178,7 +179,7 @@ scale_linetype_manual(name="Legend",values=c("Mean"="solid","Median"="dashed"))
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
-The new mean is 1.0766189\times 10^{4} and the new median is 1.0766189\times 10^{4}. They are the same and they overlap on the graph
+The new mean is 10766.19 and the new median is 10766.19. They are the same and they overlap on the graph
 
 
 4c Do these values differ from the estimates from the first part of the assignment? 
