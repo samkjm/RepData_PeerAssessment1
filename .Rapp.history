@@ -1,0 +1,333 @@
+Activity <- readcsv("activity.csv", stringsAsFactors=FALSE)
+Activity <- read.csv("activity.csv", stringsAsFactors=FALSE)
+TotalStep <- sum(Activity$steps, na.rm = TRUE)
+head(Activity)
+TotalStep
+TotalStep <- tapply(activity$steps, activity$date, FUN = sum, na.rm = TRUE)
+TotalStep <- tapply(Activity$steps, activity$date, FUN = sum, na.rm = TRUE)
+TotalStep <- tapply(Activity$steps, Activity$date, FUN = sum, na.rm = TRUE)
+head(TotalStep)
+TotalStep
+mean(TotalStep)
+hist(TotalStep)
+head(AirPassengers)
+TotalSteps <- aggregate(Activity$steps, by=list(Activity$date), FUN=sum, na.rm=TRUE)#
+	names(TotalSteps) <- c("date", "total")
+head(TotalSteps)
+png(filename = "TotalNumberofStepsPerDay.png", width = 480, height = 480, units = "px")#
+	ggplot(TotalSteps,aes(date,total)) +#
+  geom_histogram(stat="identity") +#
+  theme_bw() +#
+  xlab("Dates")+ #
+  ylab("Total number of Steps")+ #
+  labs(title= "Total numbers of Steps per day")#
+  dev.off()
+library(ggplot2)
+png(filename = "TotalNumberofStepsPerDay.png", width = 480, height = 480, units = "px")#
+	ggplot(TotalSteps,aes(date,total)) +#
+  geom_histogram(stat="identity") +#
+  theme_bw() +#
+  xlab("Dates")+ #
+  ylab("Total number of Steps")+ #
+  labs(title= "Total numbers of Steps per day")#
+  dev.off()
+head(TotalSteps)
+png(filename = "TotalNumberofStepsPerDay.png", width = 480, height = 480, units = "px")#
+	ggplot(TotalSteps,aes(x=date,y=total)) +#
+  geom_histogram(stat="identity") +#
+  theme_bw() +#
+  xlab("Dates")+ #
+  ylab("Total number of Steps")+ #
+  labs(title= "Total numbers of Steps per day")#
+  dev.off()
+png(filename = "TotalNumberofStepsPerDay.png", width = 480, height = 480, units = "px")#
+	ggplot(TotalSteps,aes(x=date,y=total)) +#
+  geom_histogram(stat="identity") +#
+  theme_bw() +#
+  xlab("Dates")+ #
+  ylab("Total number of Steps")+ #
+  labs(title= expression("Total numbers of Steps per day"))#
+  dev.off()
+png(filename = "TotalNumberofStepsPerDay.png", width = 480, height = 480, units = "px")#
+> 	ggplot(TotalSteps,aes(x=date,y=total)) +#
++   geom_histogram(stat="identity") +#
++   theme_bw() +#
++   xlab("Dates")+ #
++   ylab("Total number of Steps")
+TotalSteps <- aggregate(steps ~ date), Activity, sum, na.rm=TRUE)
+TotalSteps <- aggregate(steps ~ date, Activity, sum, na.rm=TRUE)#
+	names(TotalSteps) <- c("date", "total")
+TotalSteps
+TotalSteps2 <- ddply(Activity, .(date), summarize, total = sum(steps))
+library(plyr)
+TotalSteps2 <- ddply(Activity, .(date), summarize, total = sum(steps))
+TotalSteps2
+TotalSteps2 <- ddply(Activity, .(date), summarize, total = sum(steps), na.rm=TRUE)
+TotalSteps2
+TotalSteps2 <- ddply(Activity, .(date), summarize, total = sum(steps, na.rm=TRUE))
+TotalSteps2
+png(filename = "TotalNumberofStepsPerDay.png", width = 480, height = 480, units = "px")#
+	ggplot(TotalSteps2,aes(x=date,y=total)) +#
+  geom_histogram(stat="identity") +#
+  theme_bw() +#
+  xlab("Dates")+ #
+  ylab("Total number of Steps")+ #
+  labs(title= expression("Total numbers of Steps per day"))#
+  dev.off()
+png(filename = "TotalNumberofStepsPerDay.png", width = 1000, height = 1000, units = "px")#
+	ggplot(TotalSteps2,aes(x=date,y=total)) +#
+  geom_histogram(stat="identity") +#
+  theme_bw() +#
+  xlab("Dates")+ #
+  ylab("Total number of Steps")+ #
+  labs(title= expression("Total numbers of Steps per day"))#
+  dev.off()
+library(ggplot2)#
+library(plyr)#
+#
+## 1 load the data#
+Activity <- read.csv("activity.csv", stringsAsFactors=FALSE)#
+Activity$date <- ymd(Activity$date)#
+#
+##  2 Process/transform the data (if necessary) into a format suitable for your analysis#
+#
+# #What is mean total number of steps taken per day?#
+# For this part of the assignment, you can ignore the missing values in the dataset.#
+	# 1	Calculate the total number of steps taken per day#
+	TotalSteps <- aggregate(steps ~ date, Activity, sum, na.rm=TRUE)#
+	TotalSteps2 <- ddply(Activity, .(date), summarize, total = sum(steps, na.rm=TRUE))
+library(ggplot2)#
+library(plyr)#
+library(lubridate)#
+#
+## 1 load the data#
+Activity <- read.csv("activity.csv", stringsAsFactors=FALSE)#
+Activity$date <- ymd(Activity$date)#
+#
+##  2 Process/transform the data (if necessary) into a format suitable for your analysis#
+#
+# #What is mean total number of steps taken per day?#
+# For this part of the assignment, you can ignore the missing values in the dataset.#
+	# 1	Calculate the total number of steps taken per day#
+	TotalSteps <- aggregate(steps ~ date, Activity, sum, na.rm=TRUE)#
+	TotalSteps2 <- ddply(Activity, .(date), summarize, total = sum(steps, na.rm=TRUE))
+install.packages("lubridate")
+Activity <- read.csv("activity.csv", stringsAsFactors=FALSE)#
+Activity$date <- ymd(Activity$date)
+library(lubridate)
+Activity$date <- ymd(Activity$date)
+TotalSteps <- aggregate(steps ~ date, Activity, sum, na.rm=TRUE)#
+	TotalSteps2 <- ddply(Activity, .(date), summarize, total = sum(steps, na.rm=TRUE))
+png(filename = "TotalNumberofStepsPerDay.png", width = 1000, height = 1000, units = "px")#
+	ggplot(TotalSteps2,aes(x=date,y=total)) +#
+  geom_histogram(stat="identity") +#
+  theme_bw() +#
+  xlab("Dates")+ #
+  ylab("Total number of Steps")+ #
+  labs(title= expression("Total numbers of Steps per day"))#
+  dev.off()
+png(filename = "TotalNumberofStepsPerDay.png", width = 1000, height = 500, units = "px")#
+	ggplot(TotalSteps2,aes(x=date,y=total)) +#
+  geom_histogram(stat="identity") +#
+  theme_bw() +#
+  xlab("Dates")+ #
+  ylab("Total number of Steps")+ #
+  labs(title= expression("Total numbers of Steps per day"))#
+  dev.off()
+mean(TotalSteps)
+Total Steps
+head(TotalSteps)
+head(TotalSteps2)
+mean(TotalSteps$steps)
+mean(TotalSteps2$steps)
+mean(TotalSteps2$total)
+median(TotalSteps2$total)
+StepsByInterval <- ddply(Activity, .(interval), summarize, mean_steps = mean(steps, na.rm=TRUE))
+StepsByInterval
+daily <- activity %>%#
+        filter(!is.na(steps)) %>%#
+        group_by(interval) %>%#
+        summarize(steps=mean(steps)) %>%#
+        print
+library(dplyr)
+daily <- activity %>%#
+        filter(!is.na(steps)) %>%#
+        group_by(interval) %>%#
+        summarize(steps=mean(steps)) %>%#
+        print
+daily <- Activity %>%#
+        filter(!is.na(steps)) %>%#
+        group_by(interval) %>%#
+        summarize(steps=mean(steps)) %>%#
+        print
+daily
+StepsByInterval <- ddply(Activity, .(date,interval), summarize, mean_steps = mean(steps, na.rm=TRUE))
+head(StepsByInterval)
+StepsByInterval
+StepsByInterval <- ddply(Activity, .(interval), summarize, mean_steps = mean(steps, na.rm=TRUE))
+StepsByInterval
+png(filename = "TimeSeriesPlot.png", width = 1000, height = 500, units = "px")#
+	plot(StepsByInterval$interval, #
+     StepsByInterval$mean_steps, #
+     type="l", #
+     col="blue", #
+     lwd=2, #
+     xlab="Interval [minutes]", #
+     ylab="Average number of steps", #
+     main="Time-series of the average number of steps per 5min intervals\n(NA removed)")#
+  	dev.off()
+png(filename = "TimeSeriesPlot.png", width = 1000, height = 500, units = "px")#
+	plot(StepsByInterval$interval, #
+     StepsByInterval$mean_steps, #
+     type="l", #
+     col="black", #
+     lwd=2, #
+     xlab="Interval [minutes]", #
+     ylab="Average number of steps", #
+     main="Time-series of the average number of steps per 5min intervals\n(NA removed)")#
+  	dev.off()
+head(StepsByInterval)
+StepsByInterval[6,1]
+maxNumber <- which(StepsByInterval$mean_steps == max(StepsByInterval$mean_steps))#
+	maxInterval <- StepsByInterval[maxNumber, 1]
+maxInterval
+maxNumber
+StepsByInterval[95:120,]
+NAnum <- sum(is.na(Activity$steps))
+NAnum
+NANumber <- which(is.na(Activity$steps))#
+	mean_vec <- rep(mean(Activity$steps, na.rm=TRUE), times=length(NANumber))
+mean_vec
+Activity2 <-Activity#
+	Activity2[NANumber, "steps"] <- NAFiller
+NANumber <- which(is.na(Activity$steps))#
+	NAFiller <- rep(mean(Activity$steps, na.rm=TRUE), times=length(NANumber))
+Activity2 <-Activity#
+	Activity2[NANumber, "steps"] <- NAFiller
+StepsByDate <- ddply(Activity2, .(date), summarize, total = sum(steps, na.rm=TRUE))
+head(StepsByDate)
+png(filename = "TotalNumberofStepsPerDay_2.png", width = 1000, height = 500, units = "px")#
+	ggplot(StepsByDate,aes(x=date,y=total)) +#
+    	geom_histogram(stat="identity") +#
+  		theme_bw() +#
+  		xlab("Dates")+ #
+  		ylab("Total number of Steps")+ #
+  		labs(title= expression("Total numbers of Steps per day"))#
+  	dev.off()
+png(filename = "TotalNumberofStepsPerDay_2.png", width = 1000, height = 500, units = "px")#
+	ggplot(StepsByDate,aes(x=date,y=total)) +#
+    	geom_histogram(stat="identity") +#
+  		theme_bw() +#
+  		xlab("Dates")+ #
+  		ylab("Total number of Steps (NA filled)")+ #
+  		labs(title= expression("Total numbers of Steps per day(NA filled)"))#
+  	dev.off()
+mean(StepsByDate$total)
+median(StepsByDate2$total)
+median(StepsByDate$total)
+library(ggplot2)#
+library(plyr)
+library(lubridate)
+Activity <- read.csv("activity.csv", stringsAsFactors=FALSE)#
+Activity$date <- ymd(Activity$date)
+StepsByDate <- ddply(Activity, .(date), summarize, total = sum(steps, na.rm=TRUE))
+png(filename = "TotalNumberofStepsPerDay.png", width = 1000, height = 500, units = "px")#
+	ggplot(StepsByDate,aes(x=date,y=total)) +#
+    geom_histogram(stat="identity") +#
+  	theme_bw() +#
+  	xlab("Dates")+ #
+  	ylab("Total number of Steps")+ #
+  	labs(title= expression("Total numbers of Steps per day"))#
+  	dev.off()
+mean(StepsByDate$total)#
+	median(StepsByDate$total)
+StepsByInterval <- ddply(Activity, .(interval), summarize, mean_steps = mean(steps, na.rm=TRUE))#
+	png(filename = "TimeSeriesPlot.png", width = 1000, height = 500, units = "px")#
+	plot(StepsByInterval$interval, #
+     StepsByInterval$mean_steps, #
+     type="l", #
+     col="black", #
+     lwd=2, #
+     xlab="Interval [minutes]", #
+     ylab="Average number of steps", #
+     main="Time-series of the average number of steps per 5min intervals\n(NA removed)")#
+  	dev.off()
+maxNumber <- which(StepsByInterval$mean_steps == max(StepsByInterval$mean_steps))#
+	maxInterval <- StepsByInterval[maxNumber, 1]#
+	 maxInterval#
+	[1] 835
+NAsum <- sum(is.na(Activity$steps))#
+	> NAsum
+NAsum
+NANumber <- which(is.na(Activity$steps))#
+	NAFiller <- rep(mean(Activity$steps, na.rm=TRUE), times=length(NANumber))
+Activity2 <-Activity#
+	Activity2[NANumber, "steps"] <- NAFiller
+StepsByDate_NAfilled <- ddply(Activity2, .(date), summarize, total = sum(steps, na.rm=TRUE))#
+	png(filename = "TotalNumberofStepsPerDay_NAfilled.png", width = 1000, height = 500, units = "px")#
+	ggplot(StepsByDate_NAfilled,aes(x=date,y=total)) +#
+    	geom_histogram(stat="identity") +#
+  		theme_bw() +#
+  		xlab("Dates")+ #
+  		ylab("Total number of Steps (NA filled)")+ #
+  		labs(title= expression("Total numbers of Steps per day(NA filled)"))#
+  	dev.off()
+mean(StepsByDate_NAfilled$total)
+median(StepsByDate_NAfilled$total)
+mean(StepsByDate)==mean(StepsByDate_NAfilled)
+mean(StepsByDate)
+mean(StepsByDate$total)==mean(StepsByDate_NAfilled$total)
+median(StepsByDate$total)==mean(StepsByDate_NAfilled$total)
+summary(StepsByDate)
+summary(StepsByDate_NAfilled)
+NANumber
+NANumber <- which(is.na(Activity$steps))#
+NAFiller <- rep(mean(Activity$steps, na.rm=TRUE), times=length(NANumber))
+NANumber
+StepsByDate_NAfilled <- ddply(Activity2, .(date), summarize, total=sum(steps,na.rm=TRUE))#
+MeanNAFilled <- mean(StepsByDate_NAfilled$total)#
+MedianNAFilled <- median(StepsByDate_NAfilled$total)
+head(StepsByDate_NAfilled)
+ggplot(StepsByDate_NAfilled,aes(x=date,y=total)) +#
+    	geom_histogram(data=subset(StepsByDate_NAfilled,StepsByDate_NAfilled[:,]== NANumber),fill="gray") +#
+      geom_histogram(data=subset(StepsByDate_NAfilled,StepsByDate_NAfilled[:,]!= NANumber),fill="gray")
+ggplot(StepsByDate_NAfilled,aes(x=date,y=total)) +#
+    	geom_histogram(data=subset(StepsByDate_NAfilled,StepsByDate_NAfilled[,]== NANumber),fill="gray") +#
+      geom_histogram(data=subset(StepsByDate_NAfilled,StepsByDate_NAfilled[,]!= NANumber),fill="gray")
+X <- StepsByDate_NAfilled[,]== NANumber
+X
+StepsByDate_NAfilled
+head(StepsByDate)
+head(StepsByDate_NAfilled)
+AllStepsByDate <- cbind(StepsByDate,StepsByDate_NAfilled)
+AllStepsByDate
+df <- data.frame(#
+  x = c(rnorm(100, 0, 3), rnorm(100, 0, 10)),#
+  g = gl(2, 100)
+)
+df
+StepsByDate$MissingDataImputation <- No
+StepsByDate$MissingDataImputation <- "No"
+StepsByDate
+StepsByDate_NAfilled$MissingDataImputation <- "Yes"
+AllStepByDate2 <- rbind(StepsByDate,StepsByDate_NAfilled)
+AllStepByDate2
+df
+StepsByDate_NAfilled
+Activity2<- data.frame(date=Activity2$date, #
+                           weekday=tolower(weekdays(Activity2$date)), #
+                           steps=Activity2$steps, #
+                           interval=Activity2$interval)#
+Activity2 <- cbind(Activity2, #
+                      daytype=ifelse(Activity2$weekday == "saturday" | #
+                                     Activity2$weekday == "sunday", "weekend", #
+                                     "weekday"))#
+#
+Activity3 <- data.frame(date=Activity2$date, #
+                       weekday=Activity2$weekday, #
+                       daytype=Activity2$daytype, #
+                       interval=Activity2$interval,#
+                       steps=Activity2$steps)
+Activity3
+StepsByInterval_NAfilled <- ddply(Activity3, .(interval,daytype), summarize, mean_steps = mean(steps, na.rm=TRUE))
+StepsByInterval_NAfilled
